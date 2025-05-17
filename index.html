@@ -13,18 +13,18 @@
 
     
     <button
-    onclick="fun('tails')">tails</button>
+    onclick="fun('tail')">tails</button>
+
+    <button
+    onclick="fun('reset')">Reset</button>
     
-</body>
+
 
 <script>
 
-    const scores ={
-        wins: 0,
-        loses: 0
+    let scores = JSON.parse(localStorage.getItem('saved')) || {wins: 0 , loses :0};
 
-    }
-
+  
 
     const desis  = ['head','tail'];
 
@@ -36,6 +36,10 @@
             scores.wins += 1;
              alert(`You win ${scores.wins} Loses ${scores.loses}`);
 
+        }else if(desisyon === 'reset' ){
+            scores.wins = 0;
+            scores.loses = 0;
+
         }
         else{
             
@@ -43,10 +47,19 @@
            
              alert(`You Lose ${scores.loses} Wins ${scores.wins}`);
         }
+          localStorage.setItem('saved',JSON.stringify(scores));
 
     }
 
 
 
+     
+
+
+
+
+
+
 </script>
+</body>
 </html>
